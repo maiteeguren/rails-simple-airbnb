@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center"> All our Flats</h1>
+
+<div class="container d-flex flex-wrap">
+<% @flats.each do |flat| %>
+    <div class="card m-3" style="width: 20rem;">
+      <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap" style="height: 12rem; object-fit: cover">
+      <div class="card-body">
+        <h3 class="card-title"><%= flat.name %></h3>
+        <p class="card-text"><%= flat.description %></p>
+        <%= icon('fas', 'user-friends') %><%= flat.number_of_guests %>
+        <%= icon('fas', 'euro-sign') %><%= flat.price_per_night %>
+      </div>
+      <div class="card-footer">
+        <%= link_to 'More info', flat_path(flat) %>
+        <%= link_to 'Edit', edit_flat_path(flat) %>
+        <%= link_to 'Remove', flat, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+
+
